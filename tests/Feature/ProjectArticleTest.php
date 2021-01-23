@@ -30,7 +30,7 @@ class ProjectArticleTest extends TestCase
         )
             ->assertSuccessful();
 
-        foreach ($response->json('media') as $mediaFile) {
+        foreach ($response->json('data') as $mediaFile) {
             Storage::disk($mediaFile['disk'])
                 ->assertExists("{$mediaFile['id']}/{$mediaFile['file_name']}");
         }

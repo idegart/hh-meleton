@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectArticle\UploadFileRequest;
+use App\Http\Resources\MediaResource;
 use App\Models\ProjectUser;
 use App\Services\ProjectService;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectUserController extends Controller
 {
@@ -13,13 +14,13 @@ class ProjectUserController extends Controller
         UploadFileRequest $request,
         ProjectUser $projectUser,
         ProjectService $projectService
-    ): JsonResponse
+    ): JsonResource
     {
         $media = $projectService->attachFilesToProjectUser(
             $projectUser,
             $request->file('files')
         );
 
-        return $this->successResponse(compact('media'));
+        return MediaResource::collection($media);
     }
 }
