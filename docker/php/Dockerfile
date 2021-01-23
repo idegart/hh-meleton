@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./composer.json ./composer.lock ./
 
-RUN composer install --no-dev --prefer-dist --no-suggest --ignore-platform-reqs --no-scripts
+RUN composer install --prefer-dist --no-suggest --ignore-platform-reqs --no-scripts
 
 FROM php:7-fpm-alpine
 
