@@ -15,3 +15,6 @@ Route::post('projects/{project}/project-articles/{projectArticle}', [ProjectCont
 
 Route::post('projects/{project}/project-users/{projectUser}', [ProjectController::class, 'attachProjectUser'])
     ->name('project.attachProjectUser');
+
+Route::get('projects/{project}', [ProjectController::class, 'show'])
+    ->name('projects.show');

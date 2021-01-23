@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectContentResource;
+use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Models\ProjectArticle;
 use App\Models\ProjectUser;
@@ -31,5 +32,12 @@ class ProjectController extends Controller
         $projectContent = $projectService->attachProjectUser($project, $projectUser);
 
         return new ProjectContentResource($projectContent);
+    }
+
+    public function show(Project $project): JsonResource
+    {
+        $project->load('contents.content');
+
+        return new ProjectResource($project);
     }
 }
