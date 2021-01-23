@@ -8,7 +8,6 @@ Project
 -description text
 
 ProjectArticle
-
 -title string
 -content text
 
